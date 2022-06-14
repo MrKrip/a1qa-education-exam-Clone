@@ -1,0 +1,4 @@
+{
+  "MainPageUrl": "http://localhost:8081/web",
+  "ApiUrl": "http://localhost:8081/api"
+}
