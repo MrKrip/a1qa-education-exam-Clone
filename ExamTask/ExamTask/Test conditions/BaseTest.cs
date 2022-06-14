@@ -1,4 +1,5 @@
 ﻿using Aquality.Selenium.Browsers;
+using ExamTask.Models;
 using ExamTask.Util;
 using NUnit.Framework;
 
@@ -10,7 +11,8 @@ namespace ExamTask
         public void Setup()
         {
             ApiUtils.SetClient(ConfigClass.Config["ApiUrl"]);
-            AqualityServices.Browser.GoTo(ConfigClass.Config["MainPageUrl"]);
+            LoginModel user = ParseJson.GetDataFile<LoginModel>(ConfigClass.LoginInfoPath);
+            AqualityServices.Browser.GoTo($"{ConfigClass.Config["MainPageUrl"].Split("//")[0]}//{user.Login}:{user.Password}@{ConfigClass.Config["MainPageUrl"].Split("//")[1]}");
         }
 
         [TearDown]

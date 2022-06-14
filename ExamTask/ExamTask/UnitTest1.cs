@@ -16,7 +16,7 @@ namespace ExamTask
         public void ExamTask()
         {
             (var Token, var StatusCode) = Requests.GetToken(ConfigClass.Config["Variant"]);
-            AqualityServices.Browser.Driver.Manage().Cookies.AddCookie(new Cookie("token", Token, "localhost", "/",null));
+            AqualityServices.Browser.Driver.Manage().Cookies.AddCookie(new Cookie("token", Token));
             AqualityServices.Browser.Refresh();
             Assert.Pass();
         }
