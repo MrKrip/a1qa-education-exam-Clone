@@ -22,7 +22,8 @@
       "excludedArguments": [ "enable-automation" ],
       "startArguments": [
         "--start-maximized",
-        "--incognito"
+        "--incognito",
+        "--enable-file-cookies"
       ],
       "pageLoadStrategy": "Normal"
     },

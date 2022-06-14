@@ -1,4 +1,6 @@
 {
   "MainPageUrl": "http://localhost:8081/web",
-  "ApiUrl": "http://localhost:8081/api"
+  "ApiUrl": "http://localhost:8081/api",
+  "GetTokenRequest": "/token/get",
+  "Variant": "2"
 }
