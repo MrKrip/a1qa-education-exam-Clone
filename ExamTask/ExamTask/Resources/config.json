@@ -2,5 +2,8 @@
   "MainPageUrl": "http://localhost:8081/web",
   "ApiUrl": "http://localhost:8081/api",
   "GetTokenRequest": "/token/get",
-  "Variant": "2"
+  "GetProjectTests": "/test/get/json",
+  "Variant": "2",
+  "Project": "Nexage",
+  "ProjectId": "1"
 }

@@ -341,3 +341,4 @@ healthchecksdb
 /UI
 /test
 *.txt
+ExamTask/ExamTask/Resources/LoginInfo.json

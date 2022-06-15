@@ -9,5 +9,10 @@ namespace ExamTask.ApiRequests
         {
             return ApiUtils.PostRequest($"{ConfigClass.Config["GetTokenRequest"]}?variant={Variant}");
         }
+
+        public (List<TestsModel>,string) GetProjectTests(string id)
+        {
+            return ApiUtils.PostRequest<List<TestsModel>>($"{ConfigClass.Config["GetProjectTests"]}?projectId={id}");
+        }
     }
 }
