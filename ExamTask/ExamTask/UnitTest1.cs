@@ -14,6 +14,7 @@ namespace ExamTask
         private HomePage homePage = new HomePage();
         private Footer footer = new Footer();
         private ProjectPage projectPage = new ProjectPage();
+        private AddProjectPage addProjectPage = new AddProjectPage();
 
         [Test]
         public void ExamTask()
@@ -36,7 +37,7 @@ namespace ExamTask
             }
             catch
             {
-                Assert.Fail();
+                Assert.Fail("Response is not in JSON format");
             }
 
             Assert.AreEqual(StatusCode, "OK", "Status code is not 200.");
@@ -44,6 +45,15 @@ namespace ExamTask
             Assert.IsTrue(CompareUtil.AreTestsContainsInList(Tests, AllTests), "Tests in UI is not exist in API Request");
 
             AqualityServices.Browser.GoBack();
+            homePage.ClickAddButton();
+            AqualityServices.Browser.Tabs().SwitchToLastTab();
+            addProjectPage.AddNewProject(ConfigClass.Config["NewProjectName"]);
+            Assert.IsTrue(addProjectPage.IsAlertDisplayed(), "Message is not displayed");
+            AqualityServices.Browser.ExecuteScript("window.self.close();");
+            Assert.IsTrue(1 == AqualityServices.Browser.Tabs().TabHandles.Count && !addProjectPage.State.IsExist, "Add project tab is open");
+            AqualityServices.Browser.Tabs().SwitchToTab(AqualityServices.Browser.Tabs().TabHandles[0]);
+            AqualityServices.Browser.Refresh();
+            Assert.IsTrue(homePage.IsProjectExist(ConfigClass.Config["NewProjectName"]), "Project is not added");
         }
     }
 }

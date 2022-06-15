@@ -8,9 +8,7 @@ namespace ExamTask.Pages
     public class HomePage : Form
     {
         private ILink ProjectLink(string ProjectName) => AqualityServices.Get<IElementFactory>().GetLink(By.XPath($"//div[contains(@class,'list-group')]//a[text()[contains(.,'{ProjectName}')]]"), $"{ProjectName} link");
-        private IButton AddButton = AqualityServices.Get<IElementFactory>().GetButton(By.XPath("//div[contains(@class,'panel-heading')]//button"), "Add button");
-        private ITextBox AddProjectNameInput = AqualityServices.Get<IElementFactory>().GetTextBox(By.Id("projectName"), "Add project name input");
-        private IButton SaveProject = AqualityServices.Get<IElementFactory>().GetButton(By.XPath("//form[@id='addProjectForm']//button[@type='submit']"), "Save project button");
+        private IButton AddButton = AqualityServices.Get<IElementFactory>().GetButton(By.XPath("//div[contains(@class,'panel-heading')]//*[contains(@class,'btn')]"), "Add button");
 
         public HomePage() : base(By.XPath("//div[contains(@class,'list-group')]"), "Home page")
         {
@@ -24,7 +22,13 @@ namespace ExamTask.Pages
 
         public void ClickAddButton()
         {
+            AddButton.State.WaitForClickable();
             AddButton.Click();
+        }
+
+        public bool IsProjectExist(string ProjectName)
+        {
+            return ProjectLink(ProjectName).State.WaitForDisplayed();
         }
     }
 }
