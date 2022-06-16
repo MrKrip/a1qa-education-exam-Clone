@@ -16,10 +16,6 @@
 
         public bool Equals(TestsModel? other)
         {
-            if (name == other.name)
-            {
-                var a = 1;
-            }
             return other is not null &&
                    duration.ToLower() == other.duration &&
                    method.ToLower() == other.method &&

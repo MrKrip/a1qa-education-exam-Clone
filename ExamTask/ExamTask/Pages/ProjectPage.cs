@@ -9,7 +9,8 @@ namespace ExamTask.Pages
     public class ProjectPage : Form
     {
         private IList<ILabel> TestsParameters() => AqualityServices.Get<IElementFactory>().FindElements<ILabel>(By.XPath("//table[contains(@class,'table')]//tr//td"));
-        private ILabel TestParameter = AqualityServices.Get<IElementFactory>().GetLabel(By.XPath("//table[contains(@class,'table')]//tr//td"),"Test parameter");
+        private ILabel TestParameter = AqualityServices.Get<IElementFactory>().GetLabel(By.XPath("//table[contains(@class,'table')]//tr//td"), "Test parameter");
+        private ILink TestLink(string id) => AqualityServices.Get<IElementFactory>().GetLink(By.XPath($"//*[@id='allTests']//a[contains(@href,'testId={id}')]"), "Test link");
 
         public ProjectPage() : base(By.Id("pie"), "Project page")
         {
@@ -56,6 +57,11 @@ namespace ExamTask.Pages
                 tests.Add(new TestsModel() { name = name, duration = duration, endTime = endTime, method = method, startTime = startTime, status = status });
             }
             return tests;
+        }
+
+        public bool IsTestExist(string id)
+        {
+            return TestLink(id).State.WaitForDisplayed();
         }
     }
 }

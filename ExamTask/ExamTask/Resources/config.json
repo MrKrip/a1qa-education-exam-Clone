@@ -6,5 +6,8 @@
   "Variant": "2",
   "Project": "Nexage",
   "ProjectId": "1",
-  "NewProjectName": "TestProject"
+  "NewProjectName": "TestProject",
+  "NewTest": "/test/put",
+  "NewTestLog": "/test/put/log",
+  "NewTestAttachment": "/test/put/attachment"
 }
