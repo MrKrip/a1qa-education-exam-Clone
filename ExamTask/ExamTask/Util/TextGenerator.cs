@@ -4,7 +4,7 @@ namespace ExamTask.Util
 {
     public static class TextGenerator
     {
-        public static string GenerteText()
+        public static string GenerateText()
         {
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrtuvwxyz0123456789";
             int lenght = RandomNumberGenerator.GetInt32(0, chars.Length);

@@ -3,31 +3,31 @@ using ExamTask.Util;
 
 namespace ExamTask.ApiRequests
 {
-    public class SecondVariantRequests
+    public static class SecondVariantRequests
     {
-        public (string, string) GetToken(string Variant)
+        public static (string, string) GetToken(string Variant)
         {
             return ApiUtils.PostRequest($"{ConfigClass.Config["GetTokenRequest"]}?variant={Variant}");
         }
 
-        public (List<TestsModel>, string) GetProjectTests(string id)
+        public static (List<TestsModel>, string) GetProjectTests(string id)
         {
             return ApiUtils.PostRequest<List<TestsModel>>($"{ConfigClass.Config["GetProjectTests"]}?projectId={id}");
         }
 
-        public (string, string) AddNewTest(NewTestModel newTest)
+        public static (string, string) AddNewTest(NewTestModel newTest)
         {
-            return ApiUtils.PostRequest($"{ConfigClass.Config["NewTest"]}?SID={newTest.SID}&projectName={newTest.projectName}&testName={newTest.testName}&methodName={newTest.methodName}&env={newTest.env}");
+            return ApiUtils.PostRequest($"{ConfigClass.Config["NewTest"]}?SID={newTest.SID}&projectName={newTest.ProjectName}&testName={newTest.TestName}&methodName={newTest.MethodName}&env={newTest.Env}");
         }
 
-        public (string, string) AddTestLog(TestLogModel testLog)
+        public static (string, string) AddTestLog(TestLogModel testLog)
         {
-            return ApiUtils.PostRequest($"{ConfigClass.Config["NewTestLog"]}?testId={testLog.testId}&content={testLog.content}");
+            return ApiUtils.PostRequest($"{ConfigClass.Config["NewTestLog"]}?testId={testLog.TestId}&content={testLog.Content}");
         }
 
-        public (string, string) AddTestAttachment(TestAttachmentModel testAttachment)
+        public static (string, string) AddTestAttachment(TestAttachmentModel testAttachment)
         {
-            return ApiUtils.PostRequest($"{ConfigClass.Config["NewTestAttachment"]}?testId={testAttachment.testId}&content={testAttachment.content}&contentType={testAttachment.contentType}");
+            return ApiUtils.PostRequest($"{ConfigClass.Config["NewTestAttachment"]}?testId={testAttachment.TestId}&content={testAttachment.Content}&contentType={testAttachment.ContentType}");
         }
     }
 }

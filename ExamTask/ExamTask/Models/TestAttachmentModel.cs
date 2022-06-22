@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExamTask.Models
+﻿namespace ExamTask.Models
 {
     public class TestAttachmentModel
     {
-        public string testId { get; set; }
-        public string content { get; set; }
-        public string contentType { get; set; }
+        public string TestId { get; set; }
+        public string Content { get; set; }
+        public string ContentType { get; set; }
     }
 }

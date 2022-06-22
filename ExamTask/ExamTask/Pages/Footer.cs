@@ -14,9 +14,9 @@ namespace ExamTask.Pages
 
         }
 
-        public bool IsTaskVersionCorrect(string version)
+        public string GetTaskVersion()
         {
-            return TaskVersion.Text == $"Version: {version}";
+            return TaskVersion.Text;
         }
     }
 }

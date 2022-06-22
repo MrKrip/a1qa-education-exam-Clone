@@ -2,12 +2,12 @@
 {
     public class TestsModel : IEquatable<TestsModel?>
     {
-        public string duration { get; set; }
-        public string method { get; set; }
-        public string name { get; set; }
-        public string startTime { get; set; }
-        public string endTime { get; set; }
-        public string status { get; set; }
+        public string Duration { get; set; }
+        public string Method { get; set; }
+        public string Name { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public string Status { get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -17,16 +17,16 @@
         public bool Equals(TestsModel? other)
         {
             return other is not null &&
-                   duration.ToLower() == other.duration &&
-                   method.ToLower() == other.method &&
-                   name.ToLower() == other.name &&
-                   startTime.ToLower() == other.startTime &&
-                   status.ToLower() == other.status;
+                   Duration.ToLower() == other.Duration &&
+                   Method.ToLower() == other.Method &&
+                   Name.ToLower() == other.Name &&
+                   StartTime.ToLower() == other.StartTime &&
+                   Status.ToLower() == other.Status;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(duration, method, name, startTime, endTime, status);
+            return HashCode.Combine(Duration, Method, Name, StartTime, EndTime, Status);
         }
     }
 }

@@ -8,8 +8,7 @@ namespace ExamTask.Pages
 {
     public class ProjectPage : Form
     {
-        private IList<ILabel> TestsParameters() => AqualityServices.Get<IElementFactory>().FindElements<ILabel>(By.XPath("//table[contains(@class,'table')]//tr//td"));
-        private ILabel TestParameter = AqualityServices.Get<IElementFactory>().GetLabel(By.XPath("//table[contains(@class,'table')]//tr//td"), "Test parameter");
+        private ILabel TestParameter(int RowIndex, int ElementIndex) => AqualityServices.Get<IElementFactory>().GetLabel(By.XPath($"//table[contains(@class,'table')]//tr[td][{RowIndex}]//td[{ElementIndex}]"), "Test parameter");
         private ILink TestLink(string id) => AqualityServices.Get<IElementFactory>().GetLink(By.XPath($"//*[@id='allTests']//a[contains(@href,'testId={id}')]"), "Test link");
 
         public ProjectPage() : base(By.Id("pie"), "Project page")
@@ -20,41 +19,19 @@ namespace ExamTask.Pages
         public List<TestsModel> GetTestsList()
         {
             List<TestsModel> tests = new List<TestsModel>();
-            TestParameter.State.WaitForExist();
-            var TestParameters = TestsParameters();
+            TestParameter(1, 1).State.WaitForExist();
 
-            for (int i = 0; i < TestParameters.Count; i++)
+            for (int i = 1; TestParameter(i, 1).State.IsExist; i++)
             {
-                string name = String.Empty, duration = String.Empty, method = String.Empty, startTime = String.Empty, endTime = String.Empty, status = String.Empty;
-                for (int j = 1; j < 7; j++)
+                tests.Add(new TestsModel()
                 {
-                    if (j == 1)
-                    {
-                        name = TestParameters[i].Text.ToLower();
-                    }
-                    else if (j == 2)
-                    {
-                        method = TestParameters[i].Text.ToLower();
-                    }
-                    else if (j == 3)
-                    {
-                        status = TestParameters[i].Text.ToLower();
-                    }
-                    else if (j == 4)
-                    {
-                        startTime = TestParameters[i].Text.ToLower();
-                    }
-                    else if (j == 5)
-                    {
-                        endTime = TestParameters[i].Text.ToLower();
-                    }
-                    else if (j == 6)
-                    {
-                        duration = TestParameters[i].Text.ToLower();
-                    }
-                    i++;
-                }
-                tests.Add(new TestsModel() { name = name, duration = duration, endTime = endTime, method = method, startTime = startTime, status = status });
+                    Name = TestParameter(i, 1).Text.ToLower(),
+                    Duration = TestParameter(i, 6).Text.ToLower(),
+                    EndTime = TestParameter(i, 5).Text.ToLower(),
+                    Method = TestParameter(i, 2).Text.ToLower(),
+                    StartTime = TestParameter(i, 4).Text.ToLower(),
+                    Status = TestParameter(i, 3).Text.ToLower()
+                });
             }
             return tests;
         }

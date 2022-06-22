@@ -2,8 +2,8 @@
 {
     public class FileToJsonModel
     {
-        public string parameterName { get; set; } = null!;
-        public string filePath { get; set; } = null!;
-        public string contentType { get; set; } = null!;
+        public string ParameterName { get; set; } = null!;
+        public string FilePath { get; set; } = null!;
+        public string ContentType { get; set; } = null!;
     }
 }

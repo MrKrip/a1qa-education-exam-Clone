@@ -2,7 +2,7 @@
 {
     public class TestLogModel
     {
-        public string testId { get; set; }
-        public string content { get; set; }
+        public string TestId { get; set; }
+        public string Content { get; set; }
     }
 }

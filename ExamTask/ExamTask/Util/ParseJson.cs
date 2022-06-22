@@ -5,7 +5,7 @@ namespace ExamTask.Util
 {
     public static class ParseJson
     {
-        public static Dictionary<string, string> GetConfigFile(string path)
+        public static Dictionary<string, string> ReadConfigFile(string path)
         {
             AqualityServices.Logger.Info($"Reading a configuration file");
             var json = File.ReadAllText(path);

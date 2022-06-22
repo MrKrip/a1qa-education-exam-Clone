@@ -1,7 +1,6 @@
 ﻿using Aquality.Selenium.Browsers;
 using Aquality.Selenium.Elements.Interfaces;
 using Aquality.Selenium.Forms;
-using ExamTask.Models;
 using OpenQA.Selenium;
 
 namespace ExamTask.Pages
